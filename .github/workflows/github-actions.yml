@@ -56,6 +56,6 @@ jobs:
           port: 22
           script: |
             sudo docker rm -f jpashop
-            docker image prune -f
+            docker image rm chlgytjd/jpashop -f
             sudo docker pull ${{ secrets.DOCKER_REPO }}
-            docker run --name jpashop -d -p 8080:8080 chlgytjd/jpashop
+            docker run --name jpashop --network host -d -p 8080:8080 chlgytjd/jpashop
